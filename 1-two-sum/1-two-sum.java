@@ -4,19 +4,13 @@ class Solution {
         HashMap<Integer, Integer> hm = new HashMap<Integer, Integer>();
         int[] arr = new int[2];
         for(int i=0;i<nums.length;i++){
-            int val = target-nums[i];
-            
-            if(hm.containsKey(val)){
-                arr[0] = hm.get(val);
+            if(hm.containsKey(target-nums[i])){
+                arr[0] = hm.get(target-nums[i]);
                 arr[1] = i;
                 return arr;
             }
-            else{
-                hm.put(nums[i], i);
-            }
-
+            hm.put(nums[i], i);
         }
-        
-         return arr;
+        return arr;
     }
 }
