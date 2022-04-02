@@ -5,12 +5,10 @@ class Solution {
         int[] arr = new int[2];
         for(int i=0;i<nums.length;i++){
             if(hm.containsKey(target-nums[i])){
-                arr[0] = hm.get(target-nums[i]);
-                arr[1] = i;
-                return arr;
+                return new int[]{hm.get(target-nums[i]), i};
             }
             hm.put(nums[i], i);
         }
-        return arr;
+        return new int[]{-1, -1};
     }
 }
