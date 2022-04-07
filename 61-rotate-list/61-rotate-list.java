@@ -17,14 +17,12 @@ class Solution {
         ListNode temp = dummy;
         
         ListNode l = dummy;
-        // ListNode r = dummy;
         
         int count = 0;
         while(temp.next!=null){
             temp = temp.next;
             count++;
         }
-        // System.out.println(k+" "+count);
         
         if(count==k){
             return head;
@@ -39,7 +37,6 @@ class Solution {
         for(int i=0;i<count-k;i++){
             l = l.next;
         }
-            
         head = l.next;
         ListNode r = l.next;
         l.next = null;
@@ -47,7 +44,6 @@ class Solution {
         while(r.next!=null){
             r= r.next;
         }
-        // System.out.println("Last Node: "+r.val);
         r.next = dummy.next; 
         return head;
     }
