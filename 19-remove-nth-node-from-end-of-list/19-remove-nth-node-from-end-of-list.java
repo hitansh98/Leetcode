@@ -26,9 +26,9 @@ class Solution {
             l = l.next;
             r = r.next;
         }
-        if(l.next != null){
+        // if(l.next != null){
             l.next = l.next.next;
-        }
+        // }
         return dummy.next;
     }
 }
