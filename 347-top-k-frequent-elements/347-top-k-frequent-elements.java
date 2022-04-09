@@ -3,13 +3,7 @@ class Solution {
         HashMap<Integer, Integer> hm = new HashMap<Integer, Integer> ();
         
         for(int i=0;i<nums.length;i++){
-            if(!hm.containsKey(nums[i])){
-                hm.put(nums[i], 1);
-            }    
-            else{
-                int val = hm.get(nums[i]);
-                hm.replace(nums[i], ++val);
-            }
+            hm.put(nums[i], hm.getOrDefault(nums[i],0)+1);
         }
         // System.out.println(hm);
         PriorityQueue<Integer> pq = new PriorityQueue<Integer> (k, (a,b) -> hm.get(a) - hm.get(b) );
