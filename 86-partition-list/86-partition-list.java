@@ -20,24 +20,22 @@ class Solution {
         ListNode ptr2 = dummy;
         ListNode startNode = dummy;
 
-        ListNode temp = head;
-
-        while(temp != null){
-            if(temp.val >= x){
+        while(head != null){
+            if(head.val >= x){
                 if(ptr2==dummy){
-                    startNode = temp;
-                    ptr2 = temp;
+                    startNode = head;
+                    ptr2 = head;
                 }
                 else{
-                    ptr2.next = temp;
+                    ptr2.next = head;
                     ptr2 = ptr2.next;
                 }
             } 
             else{
-                ptr1.next = temp;
+                ptr1.next = head;
                 ptr1 = ptr1.next;
             }
-            temp = temp.next;
+            head = head.next;
         }
 
         if(ptr2!=dummy){
