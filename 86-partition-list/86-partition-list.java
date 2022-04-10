@@ -38,9 +38,8 @@ class Solution {
                 ptr1 = ptr1.next;
             }
             temp = temp.next;
-            // System.out.println(ptr1.val+"  "+ptr2.val+"  "+startNode.val);
         }
-        // System.out.println("updated:  "+ptr1.val+"  "+ptr2.val+"  "+startNode.val+"  "+dummy.next.val);
+
         if(ptr2!=dummy){
             ptr2.next = null;
             ptr1.next = startNode;
