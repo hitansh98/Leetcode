@@ -13,7 +13,6 @@ class Solution {
             else if(ops[i].equals("D")){
                 res1 += 2*st.peek();
                 st.push(2*st.peek());
-                
             }
             else if(ops[i].equals("C")){
                 res1 -= st.peek();
@@ -24,15 +23,6 @@ class Solution {
                 st.push(Integer.parseInt(ops[i]));
             }
         }
-        // System.out.println(res1);
-        
-//         int res = 0;
-//         while(!st.isEmpty()){
-//             res+=st.pop();
-//         }
-        
-//         System.out.println(res);
-        
         return res1;
     }
 }
