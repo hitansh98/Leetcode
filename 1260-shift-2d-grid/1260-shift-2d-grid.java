@@ -9,7 +9,6 @@ class Solution {
                 int x = (i*n + j + k)%(m*n);
                 int x1 = x / n;
                 int y1 = x % n;
-                
                 test[x1][y1] = grid[i][j];
             }
         }
