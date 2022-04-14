@@ -19,9 +19,7 @@ class Solution {
             return null;
         }
         
-        // System.out.println(root.val);
         if(root.val == val){
-            // System.out.println("equals");
             return root;
         }
         
