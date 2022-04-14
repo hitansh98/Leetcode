@@ -19,8 +19,6 @@ class Solution {
             root = new TreeNode(val);
             return root;
         }
-        // helper(root.left, val);
-        // helper(root.right, val);
         
         if(root.val > val){
             if(root.left == null){
@@ -43,23 +41,5 @@ class Solution {
         return root;
     }
     
-//     public void helper(TreeNode root, int val){
-//         if(root==null){
-//             root = new TreeNode(val);
-//             return;
-//         }
-        
-//         if(root.val > val){
-//             if(root.left == null){
-                
-//             }
-//             helper(root.left, val);
-//             return;
-//         }
-        
-//         else{
-//             helper(root.right, val);
-//             return;
-//         }
-//     }
+
 }
