@@ -22,9 +22,9 @@ class Solution {
         }
         
         kthSmallest(root.left, k);
-        System.out.println("Value of c 1: "+count);
+        // System.out.println("Value of c 1: "+count);
         count++;
-        System.out.println("Value of c 2: "+count);
+        // System.out.println("Value of c 2: "+count);
         if(count==k){
             ans = root.val;
         }
