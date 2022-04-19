@@ -49,7 +49,6 @@ class Solution {
                 }
             }
             else{
-                //continue with right subtree
                 prev = curr;
                 curr = curr.right;
             }
@@ -59,21 +58,4 @@ class Solution {
         first.val = second.val;
         second.val = temp;
     }
-    
-//     public void inorderHelper(TreeNode root){
-//         if(root==null){
-//             return;
-//         }
-        
-//         inorderHelper(root.left);
-        
-//         if(prev!=null && prev.val >= root.val){
-//             if(first == null) first = prev;
-//             second = root;
-//         }
-        
-//         prev = root;
-        
-//         inorderHelper(root.right);
-//     }
 }
