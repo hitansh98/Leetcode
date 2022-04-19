@@ -14,32 +14,66 @@
  * }
  */
 class Solution {
-    public TreeNode prev = null;
-    public TreeNode first = null;
-    public TreeNode second = null;
     
     public void recoverTree(TreeNode root) {
-        inorderHelper(root);
+        TreeNode prev = null;
+        TreeNode pred = null;
+        
+        TreeNode first = null;
+        TreeNode second = null;
+        
+        TreeNode curr = root;
+        
+        while(curr!=null){
+            
+            if(prev!=null && prev.val >= curr.val){
+                if(first == null) first = prev;
+                second = curr;
+            }
+            
+            if(curr.left!=null){
+                pred = curr.left;
+                
+                while(pred.right!=null && pred.right!=curr){
+                    pred = pred.right;
+                }
+                
+                if(pred.right == curr){
+                    pred.right=null;
+                    prev = curr;
+                    curr = curr.right;
+                }
+                else{
+                    pred.right = curr;
+                    curr = curr.left;
+                }
+            }
+            else{
+                //continue with right subtree
+                prev = curr;
+                curr = curr.right;
+            }
+        }
         
         int temp = first.val;
         first.val = second.val;
         second.val = temp;
     }
     
-    public void inorderHelper(TreeNode root){
-        if(root==null){
-            return;
-        }
+//     public void inorderHelper(TreeNode root){
+//         if(root==null){
+//             return;
+//         }
         
-        inorderHelper(root.left);
+//         inorderHelper(root.left);
         
-        if(prev!=null && prev.val >= root.val){
-            if(first == null) first = prev;
-            second = root;
-        }
+//         if(prev!=null && prev.val >= root.val){
+//             if(first == null) first = prev;
+//             second = root;
+//         }
         
-        prev = root;
+//         prev = root;
         
-        inorderHelper(root.right);
-    }
+//         inorderHelper(root.right);
+//     }
 }
