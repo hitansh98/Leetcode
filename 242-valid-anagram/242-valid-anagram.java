@@ -5,8 +5,8 @@ class Solution {
             return false;
         }
         for(int i=0; i<s.length(); i++){
-            alphaArray[s.charAt(i) - 'a'] = alphaArray[s.charAt(i) - 'a'] + 1;
-            alphaArray[t.charAt(i) - 'a'] = alphaArray[t.charAt(i) - 'a'] - 1;
+            alphaArray[s.charAt(i) - 'a']++;
+            alphaArray[t.charAt(i) - 'a']--;
         }
         for(int i=0;i<26;i++){
             if(alphaArray[i]!=0){
