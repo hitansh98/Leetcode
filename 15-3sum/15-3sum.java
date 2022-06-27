@@ -11,9 +11,11 @@ class Solution {
 
                     int tempSum = nums[start] + nums[end];
                     if(tempSum < res){
+                        while (start < end && nums[start] == nums[start+1]) start++;
                         start++;
                     }
                     else if(tempSum > res){
+                        while (start < end && nums[end] == nums[end-1]) end--;
                         end--;
                     }
                     else{
