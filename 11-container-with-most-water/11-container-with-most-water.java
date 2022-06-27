@@ -5,8 +5,11 @@ class Solution {
         int max = Integer.MIN_VALUE;
         
         while(start<end){
-            if(max< (end-start)*Math.min(height[start], height[end])){
-                max = (end-start)*Math.min(height[start], height[end]);
+            int width = end-start;
+            int minHeight = Math.min(height[start], height[end]);
+            
+            if(max<width*minHeight){
+                max = width*minHeight;
             }
             
             if(height[start]<height[end]){
