@@ -12,12 +12,12 @@ class Solution {
                 max = width*minHeight;
             }
             
-            if(height[start]<height[end]){
-                start++;
+            if(height[start]>height[end]){
+                end--;
             }
             
             else{
-                end--;
+                start++;
             }
         }
         
