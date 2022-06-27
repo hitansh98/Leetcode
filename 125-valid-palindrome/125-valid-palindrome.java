@@ -14,12 +14,12 @@ class Solution {
                 continue;
             }
             
-            if(Character.toLowerCase(s.charAt(start)) != Character.toLowerCase(s.charAt(end))){
+            if(Character.toLowerCase(s.charAt(start++)) != Character.toLowerCase(s.charAt(end--))){
                 return false;
             }
             
-            start++;
-            end--;
+            // start++;
+            // end--;
         }
         
         return true;
