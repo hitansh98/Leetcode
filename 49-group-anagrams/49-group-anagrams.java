@@ -6,14 +6,12 @@ class Solution {
             Arrays.sort(cArr);
             String val = String.valueOf(cArr);
             
-            if(!hm.keySet().contains(val)){
-                List<String> al = new ArrayList<String>();
-                al.add(str);
-                hm.put(val, al);
+            if(!hm.keySet().contains(val)){;
+                hm.put(val, new ArrayList<String>());
             }
-            else{
-                hm.get(val).add(str);
-            }
+            
+            hm.get(val).add(str);
+            
         }
         
         return new ArrayList<>(hm.values());
