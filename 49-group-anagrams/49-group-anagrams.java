@@ -3,9 +3,11 @@ class Solution {
         HashMap<String, List<String>> hm = new HashMap<>();
         if(strs.length==0) return new ArrayList<>();
         for(String str: strs){
-            char[] cArr = str.toCharArray();
-            Arrays.sort(cArr);
-            String val = String.valueOf(cArr);
+            char[] alpha = new char[26];
+            for(char c: str.toCharArray()) alpha[c - 'a']++;
+            // char[] cArr = str.toCharArray();
+            // Arrays.sort(cArr);
+            String val = String.valueOf(alpha);
             
             if(!hm.keySet().contains(val)){;
                 hm.put(val, new ArrayList<String>());
