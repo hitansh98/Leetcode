@@ -14,16 +14,19 @@ class Solution {
             listArr[val].add(ele);
         }
         
-        List<Integer> result = new ArrayList<Integer>();
+        // List<Integer> result = new ArrayList<Integer>();
+        int[] rArr = new int[k];
         
-        for(int i=listArr.length-1; i>0 && result.size() < k; i--){
+        for(int i=listArr.length-1, ptr=0; i>0 && ptr<k; i--){
             if(listArr[i]!=null){
-                result.addAll(listArr[i]);
+                for(int elem: listArr[i]){
+                    rArr[ptr] = elem;
+                    ptr++;
+                }
             }
         }
         
-        int[] rArr = result.stream().mapToInt(i -> i).toArray();
-        // Integer[] results = result.toArray();
+        // int[] rArr = result.stream().mapToInt(i -> i).toArray();
         return rArr;
     }
 }
