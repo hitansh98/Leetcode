@@ -2,6 +2,7 @@ class Solution {
     public int[] topKFrequent(int[] nums, int k) {
         List<Integer>[] listArr = new List[nums.length+1];
         HashMap<Integer, Integer> hm = new HashMap<>();
+        
         for(int num: nums){
             hm.put(num, hm.getOrDefault(num, 0) + 1);
         }
@@ -14,7 +15,6 @@ class Solution {
             listArr[val].add(ele);
         }
         
-        // List<Integer> result = new ArrayList<Integer>();
         int[] rArr = new int[k];
         
         for(int i=listArr.length-1, ptr=0; i>0 && ptr<k; i--){
@@ -26,7 +26,6 @@ class Solution {
             }
         }
         
-        // int[] rArr = result.stream().mapToInt(i -> i).toArray();
         return rArr;
     }
 }
