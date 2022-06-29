@@ -1,31 +1,29 @@
 class Solution {
     public int[] topKFrequent(int[] nums, int k) {
-        HashMap<Integer, Integer> hm = new HashMap<Integer, Integer> ();
-        
-        for(int i=0;i<nums.length;i++){
-            hm.put(nums[i], hm.getOrDefault(nums[i],0)+1);
+        List<Integer>[] listArr = new List[nums.length+1];
+        HashMap<Integer, Integer> hm = new HashMap<>();
+        for(int num: nums){
+            hm.put(num, hm.getOrDefault(num, 0) + 1);
         }
-        // System.out.println(hm);
-        PriorityQueue<Integer> pq = new PriorityQueue<Integer> (k, (a,b) -> hm.get(a) - hm.get(b) );
         
-        for(int m : hm.keySet()){    
-            if(pq.size()<k){
-                pq.offer(m);
+        for(int ele: hm.keySet()){
+            int val = hm.get(ele);
+            if(listArr[val]==null){
+                listArr[val] = new ArrayList<Integer>();
             }
-            else if(hm.get((Integer)pq.peek()) < hm.get(m)){
-                pq.poll();
-                pq.offer(m);
+            listArr[val].add(ele);
+        }
+        
+        List<Integer> result = new ArrayList<Integer>();
+        
+        for(int i=listArr.length-1; i>0 && result.size() < k; i--){
+            if(listArr[i]!=null){
+                result.addAll(listArr[i]);
             }
         }
         
-        // System.out.println(pq);
-        int[] fin = new int[pq.size()];
-        
-        for(int i=0;pq.size()>0;i++) {
-            // System.out.println(pq.size()+" "+pq.peek());
-            fin[i] = pq.poll();
-        }
-        
-        return fin;
+        int[] rArr = result.stream().mapToInt(i -> i).toArray();
+        // Integer[] results = result.toArray();
+        return rArr;
     }
 }
