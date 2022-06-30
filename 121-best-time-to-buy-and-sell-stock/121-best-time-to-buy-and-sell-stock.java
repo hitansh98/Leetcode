@@ -4,7 +4,7 @@ class Solution {
         int left = 0;
         int right = 1;
         
-        while(left<prices.length && right<prices.length){
+        while(right<prices.length){
             int diff = prices[right]-prices[left];
             
             if(diff>max){
