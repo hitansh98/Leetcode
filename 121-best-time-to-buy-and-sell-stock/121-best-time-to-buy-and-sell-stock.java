@@ -9,14 +9,10 @@ class Solution {
             
             if(diff>max){
                 max = diff;
-                right++;
-                continue;
             }
             
-            if(prices[right]<prices[left]){
+            else if(prices[right]<prices[left]){
                 left=right;
-                right++; 
-                continue;
             }
             
             right++;
