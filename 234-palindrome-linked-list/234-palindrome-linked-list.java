@@ -10,6 +10,40 @@
  */
 class Solution {
     public boolean isPalindrome(ListNode head) {
+        // return booleanMethod(head);
+        
+        ListNode slowPtr = head;
+        ListNode fastPtr = head;
+        
+        while(fastPtr!=null && fastPtr.next!=null){
+            slowPtr = slowPtr.next;
+            fastPtr = fastPtr.next.next;
+        }
+        
+        ListNode prevNodeStore = null;
+        while(slowPtr !=null){
+            ListNode nextNodeStore = slowPtr.next;
+            slowPtr.next = prevNodeStore;
+            prevNodeStore = slowPtr;
+            slowPtr = nextNodeStore;
+        }
+        
+        // ListNode ptr1 = head;
+        while(head!=null && prevNodeStore!=null){
+            if(head.val != prevNodeStore.val){
+                return false;
+            }
+            else{
+                head = head.next;
+                prevNodeStore = prevNodeStore.next;
+            }
+        }
+        
+        return true;
+        
+    }
+    
+    public boolean booleanMethod(ListNode head){
         Stack<Integer> st = new Stack<Integer>();
         ListNode slowPtr = head;
         ListNode fastPtr = head;
