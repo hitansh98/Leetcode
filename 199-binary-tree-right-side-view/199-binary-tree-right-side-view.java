@@ -28,7 +28,7 @@ class Solution {
         }
         
         if(al.size()<=lvl){
-            al.add(lvl, root.val);
+            al.add(root.val);
         }
         
         RtoLLevelOrder(root.right, lvl+1, al);
