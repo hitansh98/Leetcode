@@ -14,25 +14,11 @@
  * }
  */
 class Solution {
-    int max = 1;
-    public void maxCalc(TreeNode root, int maxTemp){
-        if(root==null){
-            return;
-        }
-        
-        if(maxTemp>max){
-            max = maxTemp;
-        }
-        
-        maxCalc(root.left, maxTemp+1);
-        maxCalc(root.right, maxTemp+1);
-    }
-    
     public int maxDepth(TreeNode root) {
         if(root==null){
             return 0;
         }
-        maxCalc(root, max);
-        return max;
+        
+        return 1+Math.max(maxDepth(root.left), maxDepth(root.right));
     }
 }
