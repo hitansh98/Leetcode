@@ -18,7 +18,6 @@ class Solution {
         if(root==null){
             return 0;
         }
-        
         return 1+Math.max(calculateHeight(root.left),calculateHeight(root.right));
     }
     
@@ -26,7 +25,6 @@ class Solution {
         if(root==null){
             return true;
         }
-        
-        return (isBalanced(root.left) && isBalanced(root.right) && Math.abs(calculateHeight(root.left)-calculateHeight(root.right))<=1 );
+        return isBalanced(root.left) && isBalanced(root.right) && Math.abs(calculateHeight(root.left)-calculateHeight(root.right))<=1 ;
     }
 }
