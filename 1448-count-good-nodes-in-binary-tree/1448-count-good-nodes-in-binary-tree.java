@@ -23,14 +23,12 @@ class Solution {
             return 0;
         }
         
-        max = Math.max(max, root.val); 
-        int left = goodNodesHelper(root.left, max);
-        int right = goodNodesHelper(root.right, max);
+        max = Math.max(max, root.val);
         
-        if(max <= root.val){
-            return 1 + left + right;
+        int curr = goodNodesHelper(root.left, max) + goodNodesHelper(root.right, max);
+        if(root.val >= max){
+            return 1 + curr;
         }
-        
-        return left + right;
+        return curr;
     }
 }
