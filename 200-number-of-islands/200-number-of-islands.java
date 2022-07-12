@@ -3,7 +3,6 @@ class Solution {
         int count = 0;
         
         int a = grid.length;
-        
         int b = grid[0].length;
         if(a==0 || b==0) return 0;
         
