@@ -3,8 +3,9 @@ class Solution {
         int count = 0;
         
         int a = grid.length;
-        if(a==0) return 0;
+        
         int b = grid[0].length;
+        if(a==0 || b==0) return 0;
         
         for(int i=0;i<a;i++){
             for(int j=0;j<b;j++){
