@@ -7,8 +7,6 @@ class Solution {
                 return false;
             }
             n /= 3;
-            
-            System.out.println(rem+" "+n);
         }
         
         return true;
