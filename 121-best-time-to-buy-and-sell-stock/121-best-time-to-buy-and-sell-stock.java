@@ -8,9 +8,7 @@ class Solution {
                 buy=sell;
             }
             sell++;
-            
         }
-        
         return diff;
     }
 }
