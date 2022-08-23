@@ -16,7 +16,6 @@ class Solution {
             }
         
             if(s.charAt(left)!=s.charAt(right)){
-                System.out.println("breaking case "+s.charAt(left)+" "+s.charAt(right));
                 return false;
             }
             
