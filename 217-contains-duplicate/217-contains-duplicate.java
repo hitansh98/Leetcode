@@ -5,6 +5,7 @@ class Solution {
             if(hs.contains(nums[i])){
                 return true;
             }
+            
             else{
                 hs.add(nums[i]);
             }
