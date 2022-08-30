@@ -4,15 +4,14 @@ class Solution {
         int end = arr.length-1;
         int ans=0;
         
-        while(start<=end){
+        while(start<end){
             int mid = start+(end-start)/2;
             
             if(arr[mid]>arr[mid+1]){
                 ans= mid;
-                end = mid-1;
+                end = mid;
                 
             }
-            
             else{
                 start = mid+1;
             }
