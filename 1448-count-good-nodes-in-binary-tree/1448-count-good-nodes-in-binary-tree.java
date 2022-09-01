@@ -14,21 +14,22 @@
  * }
  */
 class Solution {
+    public int count = 0;
     public int goodNodes(TreeNode root) {
-        return goodNodesHelper(root, Integer.MIN_VALUE);
+        traverseHelper(root, Integer.MIN_VALUE);
+        return count;
     }
     
-    public int goodNodesHelper(TreeNode root, int max){
+    public void traverseHelper(TreeNode root, int max){
         if(root==null){
-            return 0;
+            return;
         }
-        
-        max = Math.max(max, root.val);
-        
-        int curr = goodNodesHelper(root.left, max) + goodNodesHelper(root.right, max);
-        if(root.val >= max){
-            return 1 + curr;
+        if(root.val>=max){
+            count++;
+            max = root.val;
         }
-        return curr;
+        traverseHelper(root.left, max);
+        traverseHelper(root.right, max);
     }
+
 }
