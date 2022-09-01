@@ -10,7 +10,7 @@
             return nums[1];
         }
         
-        return (nums[0]<nums[pIndex+1] ? nums[0] : nums[pIndex+1]);
+        return Math.min(nums[0], nums[pIndex+1]);
     }
     
     public int findPivot(int[] nums){
