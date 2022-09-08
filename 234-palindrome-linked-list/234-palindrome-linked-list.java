@@ -10,64 +10,43 @@
  */
 class Solution {
     public boolean isPalindrome(ListNode head) {
-        // return booleanMethod(head);
+        ListNode ptr1 = head;
+        ListNode ptr2 = head;
         
-        ListNode slowPtr = head;
-        ListNode fastPtr = head;
-        
-        while(fastPtr!=null && fastPtr.next!=null){
-            slowPtr = slowPtr.next;
-            fastPtr = fastPtr.next.next;
+        //finding middle of LL
+        while(ptr2!=null && ptr2.next!=null){
+            ptr1 = ptr1.next;
+            ptr2 = ptr2.next.next;
         }
         
-        ListNode prevNodeStore = null;
-        while(slowPtr !=null){
-            ListNode nextNodeStore = slowPtr.next;
-            slowPtr.next = prevNodeStore;
-            prevNodeStore = slowPtr;
-            slowPtr = nextNodeStore;
+        
+        //for odd cases.
+        if(ptr2!=null){
+            ptr1 = ptr1.next;
         }
         
-        // ListNode ptr1 = head;
-        while(head!=null && prevNodeStore!=null){
-            if(head.val != prevNodeStore.val){
-                return false;
-            }
-            else{
-                head = head.next;
-                prevNodeStore = prevNodeStore.next;
-            }
+        ptr1 = reverse(ptr1);
+        ptr2 = head;
+        
+        while(ptr1!=null){
+            if(ptr1.val != ptr2.val) return false;
+            ptr1 = ptr1.next;
+            ptr2 = ptr2.next;
         }
+        
         
         return true;
-        
     }
     
-    public boolean booleanMethod(ListNode head){
-        Stack<Integer> st = new Stack<Integer>();
-        ListNode slowPtr = head;
-        ListNode fastPtr = head;
-        
-        while(fastPtr!=null && fastPtr.next!=null){
-            st.push(slowPtr.val);
-            slowPtr = slowPtr.next;
-            fastPtr = fastPtr.next.next;
+    public ListNode reverse(ListNode head){
+        ListNode prev = null;
+        while(head!=null){
+            ListNode next = head.next;
+            head.next = prev;
+            prev = head;
+            head = next;
         }
         
-        if(fastPtr!=null){
-            slowPtr = slowPtr.next;
-        }
-        
-        while(slowPtr!=null){
-            if(slowPtr.val != st.peek()){
-                return false;
-            }
-            else{
-                st.pop();
-                slowPtr = slowPtr.next;
-            }
-        }
-        
-        return true;
+        return prev;
     }
 }
