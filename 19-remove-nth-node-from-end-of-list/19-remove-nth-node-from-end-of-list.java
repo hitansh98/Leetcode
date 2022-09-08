@@ -21,8 +21,8 @@ class Solution {
         }
         
         if(ptr2==null){
-            head = ptr1.next;
-            return head;
+            // head = ptr1.next;
+            return head.next;
         }
         
         while(ptr2!=null){
