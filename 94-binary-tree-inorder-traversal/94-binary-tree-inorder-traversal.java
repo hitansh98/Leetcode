@@ -16,7 +16,6 @@
 class Solution {
     public List<Integer> inorderTraversal(TreeNode root) {
         List<Integer> al = new ArrayList<Integer>();
-        // inorderHelper(al, root);
         inorderHelper2(al, root);
         return al;
     }
@@ -37,7 +36,6 @@ class Solution {
             visiting = st.pop();
             al.add(visiting.val);
             visiting = visiting.right;
-            // st.push(visiting.right);
             
         }
         
