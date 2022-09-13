@@ -23,7 +23,6 @@ class Solution {
         if(root==null) return 0;
         
         if(root.left==null && root.right==null){
-            System.out.println(sum+" "+root.val);
             return sum+root.val;
         }
         
