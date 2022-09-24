@@ -14,29 +14,26 @@
  * }
  */
 class Solution {
-    List<List<Integer>> al = new ArrayList<List<Integer>>();
-    
     public List<List<Integer>> pathSum(TreeNode root, int targetSum) {
-        List<Integer> t = new ArrayList<Integer>();
-        helperFn(root, targetSum, t);
-        return al;
+        List<List<Integer>> res = new ArrayList<List<Integer>>();
+        
+        List<Integer> al = new ArrayList<Integer>();
+        helper(root, res, al, targetSum);
+        
+        return res;
     }
     
-    public void helperFn(TreeNode root, int target, List<Integer> temp){
-        if(root == null){
+    public void helper(TreeNode root, List<List<Integer>> res, List<Integer> al, int targetSum){
+        if(root==null){
             return;
         }
-        
-        temp.add(root.val);
-        if(root.val == target && root.left == null && root.right == null){
-            al.add(new ArrayList<Integer>(temp));
-        }
-        else{
-            helperFn(root.left, target-root.val, temp);
-            helperFn(root.right, target-root.val, temp);
+        List<Integer> al2 = new ArrayList<Integer>(al);
+        al2.add(root.val);
+        if(root.left==null && root.right==null && targetSum-root.val==0){
+            res.add(al2);
         }
         
-        temp.remove(temp.size()-1);
-        
+        helper(root.left, res, al2, targetSum-root.val);
+        helper(root.right, res, al2, targetSum-root.val);
     }
 }
