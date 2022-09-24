@@ -27,6 +27,7 @@ class Solution {
         if(root==null){
             return;
         }
+        
         al.add(root.val);
         if(root.left==null && root.right==null && targetSum-root.val==0){
             res.add(new ArrayList<Integer>(al));
