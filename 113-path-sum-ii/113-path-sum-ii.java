@@ -27,13 +27,14 @@ class Solution {
         if(root==null){
             return;
         }
-        List<Integer> al2 = new ArrayList<Integer>(al);
-        al2.add(root.val);
+        al.add(root.val);
         if(root.left==null && root.right==null && targetSum-root.val==0){
-            res.add(al2);
+            res.add(new ArrayList<Integer>(al));
         }
         
-        helper(root.left, res, al2, targetSum-root.val);
-        helper(root.right, res, al2, targetSum-root.val);
+        helper(root.left, res, al, targetSum-root.val);
+        helper(root.right, res, al, targetSum-root.val);
+        
+        al.remove(al.size()-1);
     }
 }
