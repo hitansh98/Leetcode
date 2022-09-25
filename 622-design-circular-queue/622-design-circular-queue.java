@@ -8,7 +8,7 @@ class MyCircularQueue {
     }
     
     public boolean enQueue(int value) {
-        if(isFull()){
+        if(arr[0]!=-1){
             return false;
         }
         
@@ -23,24 +23,12 @@ class MyCircularQueue {
                 break;    
             }
         }
-        
-//         for(int i=0;i<size;i++){
-//             int ele = arr[size-1-i];
-//             if(ele!=-1){
-//                 continue;
-//             }
-//             else{
-//                 arr[size-1-i] = value;
-//                 break;    
-//             }
-//         }
-        
         return true;
         
     }
     
     public boolean deQueue() {
-        if(isEmpty()){
+        if(arr[arr.length-1]==-1){
             return false;
         }
         
