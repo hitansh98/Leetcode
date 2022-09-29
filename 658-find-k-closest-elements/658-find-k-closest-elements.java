@@ -17,7 +17,6 @@ class Solution {
         }
         
         else{
-            
             int ind = findIndex(arr, x);
             int left = ind;
             int right = ind+1;
