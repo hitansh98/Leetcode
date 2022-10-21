@@ -8,7 +8,7 @@ class Solution {
             }
             else{
                 int ind = hm.get(nums[i]);
-                if(Math.abs(ind-i)<=k){
+                if(i-ind<=k){
                     return true;
                 }
                 else{
