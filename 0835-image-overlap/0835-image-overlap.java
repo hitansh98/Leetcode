@@ -1,5 +1,5 @@
 class Solution {
-        public int largestOverlap(int[][] A, int[][] B) {
+    public int largestOverlap(int[][] A, int[][] B) {
         int N = A.length;
         List<Integer> LA = new ArrayList<>(),  LB = new ArrayList<>();
         HashMap<Integer, Integer> count = new HashMap<>();
