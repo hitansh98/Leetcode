@@ -6,12 +6,10 @@ class Solution {
         boolean flag2 = true;
         for(int i=0;flag1 && flag2 && i<m;i++){
             flag1 = check(matrix, i, 0, matrix[i][0]);
-            // System.out.println("flag1: "+flag1);
         }
         
         for(int j=1;flag1 && flag2 && j<n;j++){
             flag2 = check(matrix, 0, j, matrix[0][j]);
-            // System.out.println("flag2: "+flag2);
         }
         
         return flag1 && flag2;
