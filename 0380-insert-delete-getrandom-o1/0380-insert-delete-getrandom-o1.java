@@ -26,9 +26,7 @@ class RandomizedSet {
             
             if(currIndex!=lastIndex){
                 int temp = al.get(lastIndex);
-                al.set(lastIndex, al.get(currIndex));
                 al.set(currIndex, temp);
-                
                 locs.put(temp, currIndex);
             }
             
