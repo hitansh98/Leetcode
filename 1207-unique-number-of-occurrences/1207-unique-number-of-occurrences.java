@@ -8,13 +8,12 @@ class Solution {
         }
         
         int len = hm.keySet().size();
-        int[] indexArr = new int[arr.length+1];
+        HashSet<Integer> indexSet = new HashSet<Integer>();
         for(int i: hm.keySet()){
-            if(indexArr[hm.get(i)] != 0){
+            if(indexSet.contains(hm.get(i))){
                 return false;
             }
-            
-            indexArr[hm.get(i)] = 1;
+            indexSet.add(hm.get(i));
         }
         
         return true;
