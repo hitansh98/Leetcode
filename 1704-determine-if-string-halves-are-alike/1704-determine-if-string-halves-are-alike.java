@@ -2,17 +2,12 @@ class Solution {
     public boolean halvesAreAlike(String s) {
         HashSet<Character> c = new HashSet<Character>();
         
-        
+        s = s.toLowerCase();
         c.add('a');
         c.add('e');
         c.add('i');
         c.add('o');
         c.add('u');
-        c.add('A');
-        c.add('E');
-        c.add('I');
-        c.add('O');
-        c.add('U');
         
         int mid = s.length()/2;
         
