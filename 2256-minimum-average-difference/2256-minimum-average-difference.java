@@ -11,6 +11,7 @@ class Solution {
         if(len==1){
             return 0;
         }
+        
         long diff = Math.abs(leftSum - (rightSum/(len-1)));
         int res = 0;
         
@@ -26,7 +27,6 @@ class Solution {
             else{
                 rightAvg = rightSum/(len-i-1);
             }
-            
             
             if(diff>Math.abs(leftAvg-rightAvg)){
                 diff = Math.abs(leftAvg-rightAvg);
