@@ -5,7 +5,6 @@ class Solution {
         for(int i=0;i<grid.length;i++){
             for(int j=0;j<grid[0].length;j++){
                 if(visited[i][j]==0 && grid[i][j]=='1'){
-                    System.out.println(i+" "+j);
                     count++;
                     dfs(grid, visited, i, j);
                 }
