@@ -16,12 +16,31 @@
 class Solution {
     public List<List<Integer>> levelOrder(TreeNode root) {
         List<List<Integer>> res = new ArrayList<>();
-        helper(root, 0, res);
+        if(root==null) return res;
+        //recursiveHelper(root, 0, res);
+        Queue<TreeNode> q = new LinkedList<TreeNode>();
+        q.offer(root);
+        
+        while(!q.isEmpty()){
+            int size = q.size();
+            List<Integer> inner = new ArrayList<Integer>();
+            for( int i=0;i<size;i++){
+                TreeNode curr = q.poll();
+                inner.add(curr.val);
+                if(curr.left!=null){
+                    q.offer(curr.left);
+                }
+                if(curr.right!=null){
+                    q.offer(curr.right);
+                }
+            }
+            res.add(inner);            
+        }
         
         return res;
     }
     
-    public void helper(TreeNode root, int lvl, List<List<Integer>> res){
+    public void recursiveHelper(TreeNode root, int lvl, List<List<Integer>> res){
         if(root==null){
             return;
         }
@@ -35,8 +54,8 @@ class Solution {
         res.set(lvl, temp);
         
         
-        helper(root.left, lvl+1, res);
-        helper(root.right, lvl+1, res);
+        recursiveHelper(root.left, lvl+1, res);
+        recursiveHelper(root.right, lvl+1, res);
     }
     
 }
