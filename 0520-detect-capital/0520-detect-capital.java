@@ -4,17 +4,25 @@ class Solution {
         
         char[] cArr = word.toCharArray();
         
-        if(Character.isUpperCase(cArr[0]) && Character.isUpperCase(cArr[1])){
+        if(isCapital(cArr[0]) && isCapital(cArr[1])){
             for(int i=2;i<cArr.length;i++){
-                if(Character.isLowerCase(cArr[i])) return false;
+                // System.out.println("1");
+                if(!isCapital(cArr[i])) return false;
             }
         }
         else{
             for(int i=1;i<cArr.length;i++){
-                if(Character.isUpperCase(cArr[i])) return false;
+                // System.out.println("2");
+                
+                if(isCapital(cArr[i])) return false;
             }
         }
         
         return true;
     }
+    
+    public boolean isCapital(char c){
+        // System.out.println(c-'A');
+        return (c-'A') < 27;
+    } 
 }
