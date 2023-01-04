@@ -5,8 +5,6 @@ class Solution {
             int count = hm.getOrDefault(tasks[i], 0);
             hm.put(tasks[i], ++count);
         }
-        
-        System.out.println(hm);
         int res= 0;
         for(Map.Entry<Integer, Integer> me: hm.entrySet()){
             int value = me.getValue();
