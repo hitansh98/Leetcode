@@ -120,12 +120,12 @@ class GfG
     public static void findPreSuc(Node root, Res p, Res s, int key)
     {
        // add your code here
-       Node succ = null;
+       s.succ = null;
        Node temp = root;
        
        while(temp!=null){
            if(temp.data > key){
-               succ = temp;
+               s.succ = temp;
                temp = temp.left;
            }
            else{
@@ -133,15 +133,13 @@ class GfG
            }
        }
        
-       s.succ = succ;
        
-       
-       Node pre = null;
+       p.pre = null;
        temp = root;
        
        while(temp!=null){
            if(temp.data < key){
-               pre = temp;
+               p.pre = temp;
                temp = temp.right;
            }
            else{
@@ -149,6 +147,5 @@ class GfG
            }
        }
        
-       p.pre = pre;
     }
 }
