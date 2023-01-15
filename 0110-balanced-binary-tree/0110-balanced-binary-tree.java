@@ -15,19 +15,17 @@
  */
 class Solution {
     public boolean isBalanced(TreeNode root) {
-        if(root==null){
-            return true;
-        }
+        if(root==null) return true;
         
-        return isBalanced(root.left) && isBalanced(root.right) && Math.abs(helper(root.left)-helper(root.right))<=1;
+        int lh = maxDepth(root.left);
+        int rh = maxDepth(root.right);
         
+        return (Math.abs(lh-rh) <= 1 && isBalanced(root.left) && isBalanced(root.right));
     }
     
-    public int helper(TreeNode root){
-        if(root == null){
-            return 0;
-        }
+    public int maxDepth(TreeNode root){
+        if(root==null) return 0;
         
-        return 1 + Math.max(helper(root.left), helper(root.right));
+        return 1+Math.max(maxDepth(root.left), maxDepth(root.right));
     }
 }
