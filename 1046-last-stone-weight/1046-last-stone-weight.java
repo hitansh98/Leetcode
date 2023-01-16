@@ -1,32 +1,28 @@
 class Solution {
-//     public int lastStoneWeight(int[] stones) {
-//         PriorityQueue<Integer> pq = new PriorityQueue<Integer>((a,b)-> b-a);
-//         for(int s : stones){
-//             pq.offer(s);
-//         }
-        
-//         while(pq.size() > 1){
-//             pq.offer(pq.poll()-pq.poll());
-//         }
-        
-//         return pq.poll();
-//     }
     public int lastStoneWeight(int[] stones) {
-        if(stones.length==1)return stones[0];
-        Arrays.sort(stones);
-        int y = stones.length-1;
-        int x = stones.length-2;
-        while(x>=0){
-            if(stones[x]==stones[y]){
-                stones[x] = 0;
-                stones[y] = 0;
-            }else{
-                stones[y] -= stones[x];
-                stones[x] = 0;
-            }
-            Arrays.sort(stones);
-            if(stones[x]==0)break;
+        if(stones.length<2){
+            return stones[0];
         }
-        return stones[y];
+        
+        PriorityQueue<Integer> pq = new PriorityQueue<Integer>((o1,o2) -> o2-o1);
+        
+        for(int i=0;i<stones.length;i++){
+            pq.add(stones[i]);
+        }
+        
+        while(pq.size()>1){
+            int stone1 = pq.poll();
+            int stone2 = pq.poll();
+            
+            int res = stone1-stone2;
+            
+            if(res!=0){
+                pq.add(res);
+            }
+        }
+        
+        if(pq.size()==0) return 0;
+        
+        return pq.peek();
     }
 }
