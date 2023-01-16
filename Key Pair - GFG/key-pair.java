@@ -38,23 +38,39 @@ public class Main {
 class Solution {
     boolean hasArrayTwoCandidates(int arr[], int n, int x) {
         // code here
-        Arrays.sort(arr);
+        // Arrays.sort(arr);
         
-        int first = 0;
-        int second = arr.length-1;
+        // int first = 0;
+        // int second = arr.length-1;
         
-        while(first < second){
-            if(x==arr[first]+arr[second]){
+        // while(first < second){
+        //     if(x==arr[first]+arr[second]){
+        //         return true;
+        //     }
+        //     else if(x > arr[first]+arr[second]){
+        //         first++;
+        //     }
+        //     else{
+        //         second--;
+        //     }
+        // }
+        
+        // return false;
+        
+        
+        HashSet<Integer> hs = new HashSet<Integer>();
+        
+        for(int element: arr){
+            if(hs.contains(x-element)){
                 return true;
             }
-            else if(x > arr[first]+arr[second]){
-                first++;
-            }
+            
             else{
-                second--;
+                hs.add(element);
             }
         }
         
         return false;
+        
     }
 }
