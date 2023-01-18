@@ -23,7 +23,6 @@ class Solution {
         }
         
         if(dp[index][canBuy][rem]!=-1){
-            // System.out.println(dp[index][canBuy][rem]);
             return dp[index][canBuy][rem];
         }
         
@@ -35,7 +34,6 @@ class Solution {
             dp[index][canBuy][rem] = Math.max((prices[index] + maxProfitUtil(prices, dp, index+1, 1, rem-1)), maxProfitUtil(prices, dp, index+1, 0, rem));
         }
         
-        // System.out.println(dp[index][canBuy][rem]);
         return dp[index][canBuy][rem];
     }
 }
