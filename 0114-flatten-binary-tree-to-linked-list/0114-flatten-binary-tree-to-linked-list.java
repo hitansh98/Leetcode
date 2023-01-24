@@ -38,8 +38,8 @@ class Solution {
             return root;
         }
         
-        TreeNode leftTail = flattenTree(root.left);
-        TreeNode rightTail = flattenTree(root.right);
+        TreeNode leftTail = this.flattenTree(root.left);
+        TreeNode rightTail = this.flattenTree(root.right);
         
         if(leftTail!=null){
             leftTail.right = root.right;
