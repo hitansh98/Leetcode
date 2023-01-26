@@ -28,7 +28,6 @@ class Solution {
         }
         
         int index = findValue(inorder, preorder[pStart]);
-        // System.out.println(preorder[pStart]+" "+index);
         TreeNode root = new TreeNode(inorder[index]);
         int leftLen = index - iStart;
         int rightLen = iEnd - index;
