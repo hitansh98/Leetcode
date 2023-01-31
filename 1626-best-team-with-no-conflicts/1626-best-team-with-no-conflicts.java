@@ -14,10 +14,6 @@ class Solution {
         
         Arrays.sort(pArr, (a,b)->a[1] == b[1] ? a[0]-b[0] : a[1]-b[1]);
         
-        // System.out.println(Arrays.toString(pArr));
-        // for(int i=0;i<pArr.length;i++){
-        //     System.out.println(pArr[i].age+" "+pArr[i].score);
-        // }
         
         return helper(pArr, dp, 0, 0);
     }
