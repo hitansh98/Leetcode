@@ -32,7 +32,7 @@ class Solution {
         if(pArr[index][0]>=maxAge){
             
             int x1 = helper(pArr, dp, index+1, maxAge);  //do not consider
-            int x2 = pArr[index][1] + helper(pArr, dp, index+1, pArr[index][0]);
+            int x2 = pArr[index][1] + helper(pArr, dp, index+1, pArr[index][0]); //consider it
             
             dp[index][maxAge] = Math.max(x1,x2);
         }
