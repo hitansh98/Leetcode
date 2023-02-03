@@ -31,7 +31,7 @@ class Solution {
         
         al.add(new int[]{start,maxEnd});
         
-        return al.toArray(new int[0][]);
+        return al.toArray(new int[al.size()][2]);
         
         
     }
