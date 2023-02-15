@@ -1,38 +1,19 @@
 class Solution {
     public List<Integer> addToArrayForm(int[] num, int k) {
-        int carry = 0;
-        List<Integer> res = new ArrayList<Integer>();
-        int kVal;
+       final LinkedList<Integer> result = new LinkedList<>();
+        int len = num.length - 1;
         
-        for(int i=num.length-1;i>-1;i--){
-            kVal = 0;
-            if(k>0){
-                kVal = k%10;
-                k/=10;
-            }
-           
+        while(len >= 0 || k != 0){
             
-            // num[i] = Integer.valueOf(numStr.charAt(i));
-            int val = num[i]+carry+kVal;
-            carry = val/10;
-            res.add(0, val%10);
-        }
-        
-        while(k>0 || carry==1){
-            kVal = 0;
-            if(k>0){
-                kVal = k%10;
-                k/=10;
+            if(len >= 0){
+                k += num[len--];
             }
             
-            int val = kVal+carry;
-            carry = val/10;
-            res.add(0, val%10);
+            result.addFirst(k % 10);
+            k /= 10;
         }
-        
-        // System.out.println(Arrays.toString(numArray));
-        
-        return res;
+            
+        return result;
         
         
         
