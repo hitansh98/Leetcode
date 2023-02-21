@@ -7,7 +7,7 @@ class Solution {
         
         while(left<=right){
             int mid = (right-left)/2 + left;
-            System.out.println(mid);
+            // System.out.println(mid);
             if(mid<=0 || mid>=nums.length-1){
                 // System.out.println(mid);
                 return nums[mid];
