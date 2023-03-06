@@ -6,7 +6,7 @@ class Solution {
         
         for(int i=1;i<s.length();i++){
             if(s.charAt(i) != s.charAt(i-1)){
-                res += Math.min(curr, prev);
+                // res += Math.min(curr, prev);
                 prev = curr;
                 curr = 1;
             }
@@ -14,8 +14,10 @@ class Solution {
             else{
                 curr++;
             }
+            
+            if(prev>=curr) res++;
         }
         
-        return res+ Math.min(curr, prev);
+        return res;
     }
 }
