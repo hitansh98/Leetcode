@@ -17,7 +17,6 @@ class Solution {
                 trips+= mid/t;
             }
             
-            
             if(trips < totalTrips){
                 low = mid+1;
             }
