@@ -1,7 +1,11 @@
 class Solution {
     public long minimumTime(int[] time, int totalTrips) {
+        long max = 0;
+        for(int t: time){
+            max = Math.max(max, t);
+        }
         long low = 0;
-        long high = 100_000_000_000_000L;
+        long high = max*totalTrips;
         
         while(low < high){
             long mid = (high-low)/2 + low;
@@ -10,10 +14,7 @@ class Solution {
             for(int t:time){
                 trips+= mid/t;
             }
-            
-            // if(trips == totalTrips){
-            //     ans = mid;
-            // }
+        
             if(trips < totalTrips){
                 low = mid+1;
             }
