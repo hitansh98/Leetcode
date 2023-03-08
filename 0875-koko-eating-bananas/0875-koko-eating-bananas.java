@@ -7,39 +7,29 @@ class Solution {
         
         int low = 1;
         int high = max;
-        // int ans = Integer.MAX_VALUE;
         
-        while(low < high){
+        while(low<high){
             int mid = (high-low)/2 + low;
+            int need = 0;
             
-            int hrs = 0;
-            for(int pile:piles){
-                // System.out.print("Adding pile "+pile+"....");
-                
-                if(pile<mid){
-                    hrs+=1;
+            for(int pile: piles){
+                need += pile/mid;
+                if(pile%mid!=0){
+                    need+=1;
                 }
-                else{
-                    
-                    int rem = pile%mid;
-                    if(rem>0){
-                        hrs+=1;
-                    }
-                    hrs+= (pile/mid);
-                }
-                // System.out.println(" in time "+hrs);
             }
             
-            // System.out.println(mid+" "+hrs);
-            
-            if(hrs > h){
+            if(need > h){
                 low = mid+1;
             }
-            else{
+            else
+            {
                 high = mid;
             }
+            
         }
         
         return low;
     }
+    
 }
