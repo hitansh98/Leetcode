@@ -9,11 +9,12 @@ class Solution {
         while(right < nums.length){ 
             sum+=nums[right++];
             
+            
             while(sum>=target){
                 min = Math.min(min, right-left);  
                 sum -= nums[left++];
             }
-
+            
         }
         
         if(min==Integer.MAX_VALUE) return 0;
