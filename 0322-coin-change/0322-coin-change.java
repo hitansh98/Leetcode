@@ -28,7 +28,6 @@ class Solution {
         //choose this coin
         int takeTheCoin = 1 + Math.min(helper(coins, amount-coins[curr], curr), helper(coins, amount-coins[curr], curr+1));
         
-        
         //do not choose this coin
         int doNotTakeTheCoin = 0 + helper(coins, amount, curr+1);
         
