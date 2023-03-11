@@ -27,7 +27,7 @@ class Solution {
             return temp.val;
         }
         int num = (int)(Math.random() * this.totalLen);
-        System.out.println(num);
+        // System.out.println(num);
         while(num>0){
             temp = temp.next;
             num--;
