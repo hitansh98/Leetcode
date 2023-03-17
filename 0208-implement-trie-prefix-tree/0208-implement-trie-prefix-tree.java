@@ -47,19 +47,11 @@ class Trie {
         Trie temp = this;
         for(int i=0;i<word.length();i++){
             if(temp == null) return false;
-            // System.out.println(temp.hm);
-            // System.out.println(word.charAt(i));
-            // System.out.println(temp.hm.containsKey(word.charAt(i)));
             if(!temp.hm.containsKey(word.charAt(i))){
-                // System.out.println("I have reached end check 1");
                 return false;
             }
-            // System.out.println(word.charAt(i));
             if(i==word.length()-1){
-                // System.out.println(temp);
-                // System.out.println(temp.hm.get(word.charAt(i)).hm.keySet());
                 if(!temp.hm.get(word.charAt(i)).hm.containsKey('#')){
-                    // System.out.println("I have reached end check 2");
                     return false;
                 }
             }
