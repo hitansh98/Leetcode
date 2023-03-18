@@ -20,12 +20,10 @@ class DoubleEndedQueue{
 class BrowserHistory {
     DoubleEndedQueue dqHead;
     DoubleEndedQueue curr;
-    int size = 0;
 
     public BrowserHistory(String homepage) {
         this.dqHead = new DoubleEndedQueue(homepage);
         this.curr = this.dqHead;
-        this.size = 1;
     }
     
     public void visit(String url) {
@@ -33,7 +31,6 @@ class BrowserHistory {
         this.curr.right = toVisit;
         toVisit.left = this.curr; 
         this.curr = this.curr.right;
-        size++;
     }
     
     public String back(int steps) {
