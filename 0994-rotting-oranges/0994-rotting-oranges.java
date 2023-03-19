@@ -26,7 +26,7 @@ class Solution {
         while(freshCount > 0 && !q.isEmpty()){
             time += 1;
             int size = q.size();
-            System.out.println(time);
+            // System.out.println(time);
             for(int i=0;i<size;i++){
                 int[] curr = q.poll();
                 int x = curr[0];
@@ -37,7 +37,7 @@ class Solution {
                 }
                 if(grid[x][y] == 1){
                     freshCount--;
-                    System.out.println(x+" "+y+" "+time);
+                    // System.out.println(x+" "+y+" "+time);
                 }
                 
                 grid[x][y] = 2;
