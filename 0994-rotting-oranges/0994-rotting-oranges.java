@@ -1,47 +1,61 @@
 class Solution {
     public int orangesRotting(int[][] grid) {
-        int fresh = 0;
-        int time = 0;
-        LinkedList<int[]> q = new LinkedList<int[]>();
+        int freshCount = 0;
+        int rotCount = 0;
+        int time=-1;
+        
+        LinkedList<int[]> q = new LinkedList<>();
         for(int i=0;i<grid.length;i++){
             for(int j=0;j<grid[0].length;j++){
-                if(grid[i][j]==1){
-                    fresh++;
+                if(grid[i][j] == 1){
+                    freshCount++;
                 }
-                
-                if(grid[i][j]==2){
-                    q.offer(new int[]{i,j});
+                else if(grid[i][j] == 2){
+                    q.offer(new int[]{i, j});
+                    rotCount++;
                 }
             }
         }
         
-        int[][] dirs = new int[][]{{0,-1}, {0, 1}, {1, 0}, {-1,0}};
+        if(freshCount == 0) return 0;
+        // System.out.println(q);
+        
         int[][] visited = new int[grid.length][grid[0].length];
         
-        while(!q.isEmpty() && fresh>0){
+        
+        while(freshCount > 0 && !q.isEmpty()){
+            time += 1;
             int size = q.size();
-            
+            System.out.println(time);
             for(int i=0;i<size;i++){
                 int[] curr = q.poll();
-                
-                for(int[] dir: dirs){
-                    int xcord = curr[0] + dir[0];
-                    int ycord = curr[1] + dir[1];
-                    
-                    if(xcord<0 || ycord<0 || xcord>=grid.length || ycord >=grid[0].length) continue;
-                    if(grid[xcord][ycord]==1 && visited[xcord][ycord]==0){
-                        fresh--;
-                        q.offer(new int[]{xcord, ycord});
-                        grid[xcord][ycord] = 2;
-                    }
-                    
-                    visited[xcord][ycord] = 1;
+                int x = curr[0];
+                int y = curr[1];
+                // System.out.println(x+" "+y);
+                if(x<0 || x>=grid.length || y<0 || y>=grid[0].length || visited[x][y] == 1 || grid[x][y] == 0){
+                    continue;
                 }
+                if(grid[x][y] == 1){
+                    freshCount--;
+                    System.out.println(x+" "+y+" "+time);
+                }
+                
+                grid[x][y] = 2;
+                visited[x][y] = 1;
+                
+                
+                q.offer(new int[]{x+1, y});
+                q.offer(new int[]{x-1, y});
+                q.offer(new int[]{x, y-1});
+                q.offer(new int[]{x, y+1});
             }
-            time++;
+            
+            
+            
         }
         
-        if(fresh>0) return -1;
-        return time;
+        return freshCount == 0 ? time : -1;
+        
     }
+    
 }
