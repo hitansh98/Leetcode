@@ -22,7 +22,7 @@ class Solution {
         int result = 0;
         
         for(int i=0;i<bed.size();i++){
-            System.out.println(i+" "+count);
+            // System.out.println(i+" "+count);
             if(bed.get(i) == 0){
                 count++;
             }
@@ -60,7 +60,7 @@ class Solution {
 //             maxFlowers += bed.size()%2 + bed.size()/2;
 //         }
 //         // System.out.println(maxFlowers);
-        System.out.println(result);
+        // System.out.println(result);
         
         return n<=result ? true : false;
     }
