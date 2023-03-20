@@ -15,89 +15,21 @@
  */
 
 
-public class TreeNodeFull{
-    TreeNode node;
-    boolean isGoodChild;
-    boolean isGoodGrandchild;
-    
-    TreeNodeFull(TreeNode node, boolean isGoodChild, boolean isGoodGrandchild){
-        this.node = node;
-        this.isGoodChild = isGoodChild;
-        this.isGoodGrandchild = isGoodGrandchild;
-    }
-    
-    TreeNodeFull(TreeNode node){
-        this.node = node;
-        this.isGoodChild = false;
-        this.isGoodGrandchild = false;
-    }
-    
-    TreeNodeFull(int val){
-        this.node = new TreeNode(val);
-        this.isGoodChild = false;
-        this.isGoodGrandchild = false;
-    }
-}
-
 
 class Solution {
+    public int sum = 0;
+
     public int sumEvenGrandparent(TreeNode root) {
-        int resSum = 0;
-        LinkedList<TreeNodeFull> q = new LinkedList<>();
-        q.offer(new TreeNodeFull(root));
-        
-        while(!q.isEmpty()){
-            int size = q.size();
-            
-            for(int i=0;i<size;i++){
-                TreeNodeFull curr = q.poll();
-                
-                if(curr.isGoodGrandchild == true){
-                    resSum += curr.node.val;
-                }
-                
-                if(curr.node.left != null){
-                    if(curr.isGoodChild){
-                        if(curr.node.val % 2 == 0){
-                            q.offer(new TreeNodeFull(curr.node.left, true, true));
-                        }
-                        else{
-                            q.offer(new TreeNodeFull(curr.node.left, false, true));
-                        }
-                    }
-                    else{
-                        if(curr.node.val % 2 == 0){
-                            q.offer(new TreeNodeFull(curr.node.left, true, false));
-                        }
-                        else{
-                            q.offer(new TreeNodeFull(curr.node.left, false, false));
-                        }
-                    }
-                }
-                
-                if(curr.node.right != null){
-                    if(curr.isGoodChild){
-                        if(curr.node.val % 2 == 0){
-                            q.offer(new TreeNodeFull(curr.node.right, true, true));
-                        }
-                        else{
-                            q.offer(new TreeNodeFull(curr.node.right, false, true));
-                        }
-                    }
-                    else{
-                        if(curr.node.val % 2 == 0){
-                            q.offer(new TreeNodeFull(curr.node.right, true, false));
-                        }
-                        else{
-                            q.offer(new TreeNodeFull(curr.node.right, false, false));
-                        }
-                    }
-                }
-                
-            }
-            
+        dfs(root, null, null);
+        return sum;
+    }
+
+    void dfs(TreeNode current, TreeNode parent, TreeNode grandParent) {
+        if (current == null) return; // base case 
+        if (grandParent != null && grandParent.val % 2 == 0) {
+            sum += current.val;
         }
-        
-        return resSum;
+        dfs(current.left, current, parent);// ( newChild, parent, GrandParent)
+        dfs(current.right, current, parent);
     }
 }
