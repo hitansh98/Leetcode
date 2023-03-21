@@ -11,7 +11,7 @@ class Solution {
             else{
                 res += ++count;
             }
-            ptr++;
+            ++ptr;
         }
         
         
