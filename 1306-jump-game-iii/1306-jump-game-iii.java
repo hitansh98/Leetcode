@@ -1,10 +1,10 @@
 class Solution {
     Boolean[] dp;
-    Boolean[] vis;
+    boolean[] vis;
     
     public boolean canReach(int[] arr, int start) {
         dp = new Boolean[arr.length];
-        vis = new Boolean[arr.length];
+        vis = new boolean[arr.length];
         Arrays.fill(vis, false);
         return helper(arr, start);
     }
