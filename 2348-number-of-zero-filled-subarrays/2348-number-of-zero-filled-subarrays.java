@@ -6,16 +6,14 @@ class Solution {
         long count = 0;
         while(ptr<nums.length){
             if(nums[ptr] != 0){
-                res += (count*(count+1))/2;
                 count = 0;
             }
             else{
-                count++;
+                res += ++count;
             }
             ptr++;
         }
         
-        res+=(count*(count+1))/2;
         
         return res;
     }
