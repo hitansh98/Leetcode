@@ -14,7 +14,7 @@ class Solution {
         q.push(start);
         while(!q.isEmpty()){
             int size = q.size();
-            System.out.println(q);
+            
             for(int i=0;i<size;i++){
                 int curr = q.poll();
                 
