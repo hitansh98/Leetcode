@@ -13,35 +13,25 @@
  *     }
  * }
  */
-
 class Solution {
-    int res = 0;
+    int sum;
     public int sumNumbers(TreeNode root) {
-        if(root==null){
-            return 0;
-        }
-        
+        sum = 0;
         helper(root, 0);
         
-        return res;
-        
+        return sum;
     }
     
-    public int helper(TreeNode root, int num){
+    public void helper(TreeNode root, int tempSum){
         if(root==null){
-            return 0;
+            return;
         }
+        
         if(root.left==null && root.right==null){
-            int temp = num*10;
-            res += num*10 + root.val;
-            return temp + root.val;
+            sum += (tempSum*10 + root.val);
         }
         
-        int leftSide = helper(root.left, num*10 + root.val);
-        int rightSide = helper(root.right, num*10 + root.val);
-        
-        // res+= leftSide+rightSide;
-        
-        return leftSide+rightSide;
+        helper(root.left, tempSum*10 + root.val);
+        helper(root.right, tempSum*10 + root.val);
     }
 }
