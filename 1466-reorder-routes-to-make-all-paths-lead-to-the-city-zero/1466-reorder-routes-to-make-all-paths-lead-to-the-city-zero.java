@@ -1,7 +1,6 @@
 class Solution {
-    int res;
+    int res = 0;
     public int minReorder(int n, int[][] connections) {
-        int res = 0;
         List<Integer>[] undirectedMap = new List[n];
         List<Integer>[] directedMap = new List[n];
         for(int i=0;i<undirectedMap.length;i++){
@@ -16,31 +15,34 @@ class Solution {
             directedMap[curr[0]].add(curr[1]);
         }
         
-        
         boolean[] vis = new boolean[n];
         Arrays.fill(vis, false);
         
-        
-        return dfs(0, undirectedMap, directedMap, vis);
+        dfs(0, undirectedMap, directedMap, vis);
+        return res;
     }
     
     
     
-    public int dfs(int val, List<Integer>[] undirectedMap, List<Integer>[] directedMap, boolean[] vis){
+    public void dfs(int val, List<Integer>[] undirectedMap, List<Integer>[] directedMap, boolean[] vis){
         List<Integer> conns = undirectedMap[val];
         List<Integer> directedConns = directedMap[val];
         
         // System.out.println(conns);
         // System.out.println(directedConns);
-        int changes = 0;
+        // int changes = 0;
         vis[val] = true;
         
         for(int conn: conns){
             if(!vis[conn]){
-                changes += dfs(conn, undirectedMap, directedMap, vis) + (directedMap[val].contains(conn) ? 1 : 0);
+                if(directedMap[val].contains(conn)){
+                    res++;
+                }
+                dfs(conn, undirectedMap, directedMap, vis);
             }
+            
         }
         
-        return changes;
+        return;
     }
 }
