@@ -16,7 +16,7 @@ class Solution {
             // directedMap[curr[0]].add(curr[1]);
         }
         
-        System.out.println(Arrays.toString(undirectedMap));
+        // System.out.println(Arrays.toString(undirectedMap));
         // System.out.println(Arrays.toString(directedMap));
         
         
