@@ -1,7 +1,7 @@
 class Solution {
     Integer[][] dp;
     public int mincostTickets(int[] days, int[] costs) {
-        dp = new Integer[days.length][495];
+        dp = new Integer[days.length][395];
         return helper(days, costs, 0, 0);
     }
     
