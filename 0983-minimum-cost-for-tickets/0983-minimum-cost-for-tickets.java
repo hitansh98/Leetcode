@@ -15,10 +15,17 @@ class Solution {
         }
         
         if(validTill < days[index]){
+            int min = Integer.MAX_VALUE;
+            
             int oneDay = costs[0] + helper(days, costs, index+1, days[index]);
             int oneWeek = costs[1] + helper(days, costs, index+1, days[index]+6);
             int oneMonth = costs[2] + helper(days, costs, index+1, days[index]+29);
-            return dp[index][validTill] = Math.min(Math.min(oneDay, oneWeek), oneMonth);
+            
+            if(min > oneDay) min = oneDay;
+            if(min > oneWeek) min = oneWeek;
+            if(min > oneMonth) min = oneMonth;
+            
+            return dp[index][validTill] = min;
         }
         
         return dp[index][validTill] = helper(days, costs, index+1, validTill);
