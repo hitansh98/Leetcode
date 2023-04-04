@@ -1,6 +1,23 @@
 class Solution {
     public int partitionString(String s) {
-        return helper(s, 1, s.length());
+        // return helper(s, 1, s.length());
+        
+        int parts = 1;
+        int ptr = 0;
+        
+        Set<Character> hs = new HashSet<Character>();
+        
+        while(ptr < s.length()){
+            if(hs.contains(s.charAt(ptr))){
+                parts++;
+                hs.clear();
+            }
+            
+            hs.add(s.charAt(ptr));
+            ptr++;
+        }
+        
+        return parts;
     }
     
     public int helper(String s, int low, int high){
