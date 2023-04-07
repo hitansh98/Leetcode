@@ -7,9 +7,8 @@ class Solution {
         int max = 1;
         for(int i=0;i<grid.length;i++){
             for(int j=0;j<grid[0].length;j++){
-                // System.out.println("for: "+grid[i][j]);
                 max = Math.max(max, 1 + dfs(grid, new boolean[grid.length][grid[0].length], i, j));
-                // System.out.println("max so far: "+max);
+                
                 
             }
         }
@@ -33,8 +32,6 @@ class Solution {
                     dp[i-1][j] = dfs(grid, visited, i-1, j);
                 }
                 top = 1 + dp[i-1][j];
-                // tester.add(grid[i-1][j]);
-                // System.out.println(grid[i][j] +" "+ top);
             }
         }
         
@@ -44,8 +41,6 @@ class Solution {
                     dp[i+1][j] = dfs(grid, visited, i+1, j);
                 }
                 down = 1 + dp[i+1][j];
-                // tester.add(grid[i+1][j]);
-                // System.out.println(grid[i][j] +" "+ down);
             }
         }
         
@@ -55,8 +50,6 @@ class Solution {
                     dp[i][j-1] = dfs(grid, visited, i, j-1);
                 }
                 left = 1 + dp[i][j-1];
-                // tester.add(grid[i][j-1]);
-                // System.out.println(grid[i][j] +" "+ left);
             }
         }
         
@@ -66,9 +59,6 @@ class Solution {
                     dp[i][j+1] = dfs(grid, visited, i, j+1);
                 }
                 right = 1 + dp[i][j+1];
-                // tester.add(grid[i][j+1]);
-                // System.out.println("going right: ");
-                // System.out.println(grid[i][j] +" "+ right);
             }
         } 
         
