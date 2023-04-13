@@ -22,11 +22,11 @@ class Solution {
         }
         
         int count = 0;
-        n =  n - n%5;
+        int num = n- n%5;
         
         
-        for(int i=5;i<=n;i*=5){
-            count += n/i;
+        for(int i=5;i<=num;i*=5){
+            count += num/i;
         }
         
         
