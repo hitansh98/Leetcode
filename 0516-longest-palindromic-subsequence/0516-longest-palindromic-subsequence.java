@@ -14,7 +14,7 @@ class Solution {
             return dp[start][end];
         }
         
-        if(s.charAt(start) == s.charAt(end)) return 2 + solve(s, dp, start+1, end-1);
+        if(s.charAt(start) == s.charAt(end)) return dp[start][end] =  2 + solve(s, dp, start+1, end-1);
         
         int leaveleft = solve(s, dp, start+1, end);
         int leaveRight = solve(s, dp, start, end-1);
