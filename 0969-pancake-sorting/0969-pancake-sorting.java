@@ -4,7 +4,7 @@ class Solution {
         List<Integer> res = new ArrayList<>();
         
         while(len > 0){
-            int max = Integer.MIN_VALUE;
+            int max = 0;
             int maxIndex = -1;
             for(int i=0;i<len;i++){
                 if(max < arr[i]){
