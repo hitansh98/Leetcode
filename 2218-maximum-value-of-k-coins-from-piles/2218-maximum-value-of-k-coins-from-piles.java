@@ -17,9 +17,9 @@ class Solution {
         
         int res = solve(piles, i+1, k);
         int curSum = 0;
-        for(int j=0;j<Math.min(piles.get(i).size(), k);j++){
-            curSum += piles.get(i).get(j);
-            res = Math.max(res, curSum + solve(piles, i+1, k-j-1));
+        for(int j=1;j<=Math.min(piles.get(i).size(), k);j++){
+            curSum += piles.get(i).get(j-1);
+            res = Math.max(res, curSum + solve(piles, i+1, k-j));
         }
         
         return dp[i][k] = res;
