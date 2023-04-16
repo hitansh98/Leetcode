@@ -1,7 +1,17 @@
 class Solution {
     Long[][] dp;
+    int[][] freqCount;
     public int numWays(String[] words, String target) {
         dp = new Long[words[0].length()][target.length()];
+        freqCount = new int[words[0].length()][26];
+        
+        for(int i=0;i<words.length;i++){
+            for(int j=0;j<words[0].length();j++){
+                int c = words[i].charAt(j) - 'a';
+                freqCount[j][c]++;
+            }
+        }
+        
         return (int) solve(words, target, 0, 0);
     }
     
@@ -16,12 +26,12 @@ class Solution {
         
         long res = 0;
         
-        for(int idx = 0; idx < words.length;idx++){
-            if(words[idx].charAt(c) == target.charAt(t)){
-                res += solve(words, target, c + 1, t + 1)%1000000007;
-            }
-        }
-        
+        // for(int idx = 0; idx < words.length;idx++){
+        //     if(words[idx].charAt(c) == target.charAt(t)){
+        //         res += solve(words, target, c + 1, t + 1)%1000000007;
+        //     }
+        // }
+        res += (freqCount[c][target.charAt(t)-'a'] * solve(words, target, c+1, t+1))%1000000007;
         res += solve(words, target, c + 1, t)%1000000007; 
         
         return dp[c][t] = res%1000000007;
