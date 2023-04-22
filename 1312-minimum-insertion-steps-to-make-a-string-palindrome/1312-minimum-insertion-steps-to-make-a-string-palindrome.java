@@ -1,21 +1,24 @@
 class Solution {
     Integer[][] dp;
     public int minInsertions(String s) {
-        dp = new Integer[s.length()][s.length()];
-        return helper(s, 0, s.length()-1);
+        int n = s.length();
+        dp = new Integer[n+1][n+1];
+        return helper(s, 0, n-1);
     }
     
-    public int helper(String s, int i, int j){
-        if(i>j) return 0; //base case
-        
-        if(dp[i][j] != null){
-            return dp[i][j];
+    public int helper(String s, int left, int right){
+        if(left>=right){
+            return 0;
+        }
+        if(dp[left][right] != null){
+            return dp[left][right];
         }
         
-        if(s.charAt(i) == s.charAt(j)){
-            return dp[i][j] = helper(s, i+1, j-1);
+        if(s.charAt(left) == s.charAt(right)){
+            return dp[left][right] = helper(s, left+1, right-1);
         }
         
-        return dp[i][j] = 1 + Math.min(helper(s, i+1, j), helper(s, i, j-1));
+        return dp[left][right] = 1 + Math.min(helper(s, left+1, right), helper(s, left, right-1));
+        
     }
 }
