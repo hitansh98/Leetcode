@@ -20,39 +20,67 @@ class Node {
 
 class Solution {
     Map<Node, Node> hm;
+    Set<Node> visited;
     public Node cloneGraph(Node node) {
         if(node==null) return null;
         hm = new HashMap<>();
-        Set<Node> visited = new HashSet<>();
-        LinkedList<Node> q = new LinkedList<>();
+        visited = new HashSet<>();
         
-        q.offer(node);
         
-        while(!q.isEmpty()){
-            Node curr = q.poll();
+        //BFS solution
+        // LinkedList<Node> q = new LinkedList<>();
+        
+        // q.offer(node);
+        
+//         while(!q.isEmpty()){
+//             Node curr = q.poll();
             
-            if(visited.contains(curr)){
-                continue;
-            }
+//             if(visited.contains(curr)){
+//                 continue;
+//             }
             
-            visited.add(curr);
+//             visited.add(curr);
             
-            if(!hm.keySet().contains(curr)){
-                hm.put(curr, new Node(curr.val));
-            }
+//             if(!hm.keySet().contains(curr)){
+//                 hm.put(curr, new Node(curr.val));
+//             }
             
-            for(Node nei: curr.neighbors){
-                if(!hm.keySet().contains(nei)){
-                    hm.put(nei, new Node(nei.val));
-                }
+//             for(Node nei: curr.neighbors){
+//                 if(!hm.keySet().contains(nei)){
+//                     hm.put(nei, new Node(nei.val));
+//                 }
                 
-                hm.get(curr).neighbors.add(hm.get(nei));
-                q.offer(nei);
-            }
-        }
+//                 hm.get(curr).neighbors.add(hm.get(nei));
+//                 q.offer(nei);
+//             }
+//         }
+        
+        //DFS Solution
+        
+        dfs(node);
         
         return hm.get(node);
     }
     
+    public void dfs(Node node){
+        if(visited.contains(node)){
+            return;
+        }
+        
+        visited.add(node);
+        
+        if(!hm.keySet().contains(node)){
+            hm.put(node, new Node(node.val));
+        }
+        
+        for(Node nei: node.neighbors){
+            if(!hm.keySet().contains(nei)){
+                hm.put(nei, new Node(nei.val));
+            }
+            
+            hm.get(node).neighbors.add(hm.get(nei));
+            dfs(nei);
+        }
+    }
     
 }
