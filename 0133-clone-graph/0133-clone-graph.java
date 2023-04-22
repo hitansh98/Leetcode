@@ -19,16 +19,18 @@ class Node {
 */
 
 class Solution {
+    Map<Node, Node> hm;
     public Node cloneGraph(Node node) {
-        Map<Node, Node> hm = new HashMap<>();
         if(node==null) return null;
-        //traverse graph via BFS
-        Queue<Node> q = new LinkedList<>();
+        hm = new HashMap<>();
         Set<Node> visited = new HashSet<>();
+        LinkedList<Node> q = new LinkedList<>();
+        
         q.offer(node);
         
         while(!q.isEmpty()){
             Node curr = q.poll();
+            
             if(visited.contains(curr)){
                 continue;
             }
@@ -39,17 +41,18 @@ class Solution {
                 hm.put(curr, new Node(curr.val));
             }
             
-            for(Node neighbor: curr.neighbors){
-                if(!hm.keySet().contains(neighbor)){
-                    hm.put(neighbor, new Node(neighbor.val));
-                    
+            for(Node nei: curr.neighbors){
+                if(!hm.keySet().contains(nei)){
+                    hm.put(nei, new Node(nei.val));
                 }
-                hm.get(curr).neighbors.add(hm.get(neighbor));
-                q.offer(neighbor);
+                
+                hm.get(curr).neighbors.add(hm.get(nei));
+                q.offer(nei);
             }
         }
         
         return hm.get(node);
-        
     }
+    
+    
 }
