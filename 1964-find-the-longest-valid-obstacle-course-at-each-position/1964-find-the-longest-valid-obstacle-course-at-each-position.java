@@ -1,32 +1,35 @@
 class Solution {
     public int[] longestObstacleCourseAtEachPosition(int[] obstacles) {
-        int i = -1, cur = 0, lisSize = -1;
         int[] lis = new int[obstacles.length];
-        int[] ans = new int[obstacles.length];
+        int[] result = new int[obstacles.length];
+        int curr = 0;
+        int i = -1;
+        int lisSize = -1;
         
-        for (int curHeight: obstacles) {
-            if (i == -1 || lis[i] <= curHeight) {
-                lis[++i] = curHeight;
+        for(int obs: obstacles){
+            if(i == -1 || lis[i] <= obs){
+                lis[++i] = obs;
                 lisSize = i;
-            } else {
-                lisSize = search(lis, 0, i, curHeight);
-                lis[lisSize] = curHeight;
+            }
+            else{
+                lisSize = search(lis, 0, i, obs);
+                lis[lisSize] = obs;
             }
             
-            ans[cur++] = lisSize + 1;
+            result[curr++] = lisSize + 1;
         }
         
-        return ans; 
+        return result;
     }
     
-    public int search(int[] obstacles, int start, int end, int target){
+    public int search(int[] lis, int start, int end, int target){
         int left = start;
         int right = end;
         int boundary = 0;
         
         while(left<=right){
             int mid = left + (right-left)/2;
-            if(obstacles[mid] > target){
+            if(lis[mid] > target){
                 boundary = mid;
                 right = mid - 1;
             }
