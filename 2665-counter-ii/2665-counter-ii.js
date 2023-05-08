@@ -4,21 +4,21 @@
  */
 var createCounter = function(init) {
     let count = init;
-    let obj = {};
+    let obj = {
+        "increment" : () => {
+            count++;
+            return count;
+        },
     
-    obj.increment = () => {
-        count++;
-        return count;
-    };
+        "decrement": () => {
+            count--;
+            return count;
+        },
     
-    obj.decrement = () => {
-        count--;
-        return count;
-    }
-    
-    obj.reset = () => {
-        count = init;
-        return count;
+        "reset": () => {
+            count = init;
+            return count;
+        }
     }
 
     return obj;
