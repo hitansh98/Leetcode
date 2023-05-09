@@ -18,11 +18,11 @@ class Solution {
         res.add(matrix[curr_x][curr_y]);
         
         while(num != totalCount){
-            int new_x = curr_x + dir[ptr % 4][0];
-            int new_y = curr_y + dir[ptr % 4][1];
+            int temp = ptr % 4;
+            int new_x = curr_x + dir[temp][0];
+            int new_y = curr_y + dir[temp][1];
             
             if(new_x < top || new_x > bottom || new_y < left || new_y > right){
-                int temp = ptr % 4;
                 if(temp == 0){
                     top++;
                 }
