@@ -1,45 +1,26 @@
 class Solution {
     public int maxSatisfied(int[] customers, int[] grumpy, int minutes) {
-        int n = customers.length;
-        int[] sliderValues = new int[n-minutes+1];
-        int maxValue = Integer.MIN_VALUE;
-        int maxIndex = -1;
-        for(int i=0;i<sliderValues.length;i++) {
-            sliderValues[i] = computeValue(customers, grumpy, sliderValues, minutes, i);
-            if(maxValue < sliderValues[i]) {
-                maxIndex = i;
-                maxValue = sliderValues[i];
-            }
-        }
-        System.out.println(Arrays.toString(sliderValues));
-        for(int i=maxIndex;i<maxIndex + minutes;i++) {
-            grumpy[i] = 0;
-        }
-        
-        int max = 0;
-        for(int i=0;i<n;i++) {
-           if(grumpy[i] == 0) {
-               max += customers[i];
-           }
-        }
-        return max;
-        
-        
-    }
-    
-    public int computeValue(int[] customers, int[] grumpy, int[] sliderValues, int minutes, int startIdx) {
+        int total = 0;
         int res = 0;
-        if(startIdx == 0) {
-            for(int i=startIdx;i<startIdx+minutes;i++) {
-                res += customers[i]*grumpy[i];
+        
+        for(int i=0;i<customers.length;i++) {
+            total += (1 - grumpy[i])*customers[i];
+        }
+        
+        int windowAll = 0;
+        int windowPartial = 0;
+        for(int i=0;i<customers.length;i++) {
+            windowAll += customers[i];
+            windowPartial += (1-grumpy[i])*customers[i];
+
+            if(i >= minutes - 1) {
+                res = Math.max(res, total + windowAll - windowPartial);
+                int left = i - minutes + 1;
+                windowAll -= customers[left];
+                windowPartial -= (1-grumpy[left])*customers[left];
             }
-        } else {
-            res = sliderValues[startIdx-1];
-            res -= customers[startIdx-1]*grumpy[startIdx-1];
-            res += customers[startIdx+minutes-1]*grumpy[startIdx+minutes-1]; 
         }
         
         return res;
     }
-    
 }
