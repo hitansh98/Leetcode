@@ -1,6 +1,6 @@
 class Solution {
     public int divisorSubstrings(int num, int k) {
-        String numString = "" + num;
+        String numString = String.valueOf(num);
         int result = 0;
         for(int i=0;i<numString.length() - k + 1;i++) {
             String numSubs = numString.substring(i, i+k);
