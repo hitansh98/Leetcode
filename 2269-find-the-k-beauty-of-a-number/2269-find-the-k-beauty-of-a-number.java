@@ -4,7 +4,8 @@ class Solution {
         int result = 0;
         for(int i=0;i<numString.length() - k + 1;i++) {
             String numSubs = numString.substring(i, i+k);
-            if(Integer.valueOf(numSubs) != 0 && num % Integer.valueOf(numSubs) == 0) {
+            int subsValue = Integer.valueOf(numSubs);
+            if(subsValue != 0 && num % subsValue == 0) {
                 result++;
             }
         }
